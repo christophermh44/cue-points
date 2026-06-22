@@ -1,0 +1,268 @@
+:root {
+    --main-color: AccentColor;
+
+    --surface-color: oklch(from var(--main-color) 0.8 0.05 h);
+    --surface-dim-color: oklch(from var(--main-color) 0.7 0.05 h);
+    --content-color: oklch(from var(--main-color) 0.2 0.05 h);
+
+    color-scheme: only light;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    font: inherit;
+}
+
+body {
+    background-color: var(--surface-color);
+    block-size: 100dvb;
+    color: var(--content-color);
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+header {
+    background-color: var(--surface-color);
+    display: flex;
+    gap: 0.5rem;
+    inline-size: 100%;
+    inset-block-start: 0;
+    margin-inline: auto;
+    max-inline-size: 80rch;
+    padding: 1.5rem 2.5rem;
+    position: sticky;
+    z-index: 1;
+}
+
+dialog {
+    background-color: var(--surface-dim-color);
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 0 4rem rgb(0 0 0 / 0.3);
+    min-inline-size: 16rem;
+    padding: 0;
+}
+
+dialog header {
+    align-items: center;
+    background-color: var(--content-color);
+    color: var(--surface-color);
+    justify-content: space-between;
+    max-inline-size: none;
+    padding: 0.5rem 1rem;
+}
+
+dialog header h2 {
+    font-weight: bold;
+}
+
+dialog .content {
+    align-items: stretch;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-block: 0;
+    margin-inline-end: auto;
+}
+
+footer {
+    background-color: var(--surface-dim-color);
+    display: flex;
+    justify-content: space-between;
+    inset-block-end: 0;
+    inset-inline: 0;
+    position: fixed;
+}
+
+header button {
+    align-items: center;
+    background-color: var(--surface-dim-color);
+    border: none;
+    border-radius: 0.25rem;
+    color: var(--content-color);
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.25rem 0.5rem;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(1.2);
+}
+
+button:active {
+    filter: brightness(0.9);
+}
+
+fieldset {
+    border: thin solid;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+#playlist {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    inline-size: 100%;
+    margin-inline: auto;
+    max-inline-size: 80rch;
+    padding-inline: 0.8rem;
+}
+
+#playlist p {
+    align-content: center;
+    background-color: var(--surface-dim-color);
+    border-radius: 2rem;
+    font-weight: bold;
+    flex-grow: 1;
+    margin-block: 0 1rem;
+    min-block-size: 8rem;
+    text-align: center;
+}
+
+#playlist ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style-type: none;
+    margin: 0 0 0.5rem;
+    padding: 0;
+}
+
+.playlist-item {
+    background-color: var(--surface-dim-color);
+    border-radius: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.playlist-item:not(:last-child) {
+    border-end-start-radius: 0.5rem;
+    border-end-end-radius: 0.5rem;
+}
+
+.playlist-item:not(:first-child) {
+    border-start-start-radius: 0.5rem;
+    border-start-end-radius: 0.5rem;
+}
+
+.playlist-item > * {
+    min-inline-size: 0;
+}
+
+.playlist-item__button {
+    align-items: center;
+    background-color: var(--content-color);
+    border: none;
+    border-radius: 1.5rem 0.5rem 0.5rem 1.5rem;
+    color: var(--surface-color);
+    display: flex;
+    flex-shrink: 0;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.playlist-item__button:not(:first-of-type),
+.playlist-item:not(:last-child) .playlist-item__button {
+    border-end-start-radius: 0.5rem;
+}
+
+.playlist-item__button:not(:first-of-type),
+.playlist-item:not(:first-child) .playlist-item__button {
+    border-start-start-radius: 0.5rem;
+}
+
+.playlist-item__tags {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.25rem;
+}
+
+.playlist-item__title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.playlist-item__artist {
+    line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.playlist-item__times {
+    align-items: end;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    font-family: monospace;
+    gap: 0.5rem;
+    line-height: 1;
+    padding-inline-end: 0.5rem;
+    text-align: end;
+}
+
+.playlist-item__mix-point {
+    align-items: center;
+    background-color: var(--surface-color);
+    border-radius: calc(Infinity * 1em);
+    display: flex;
+    font-size: 125%;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.playlist-item__duration {
+    padding-inline-end: 0.5rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+select,
+input {
+    background-color: var(--surface-color);
+    border: thin solid;
+    border-radius: 0.5rem;
+    color: var(--content-color);
+    padding: 0.25rem 0.5rem;
+}
+
+details {
+    inline-size: 100%;
+    margin: 2rem auto;
+    max-inline-size: 80rch;
+    padding: 0 2rem;
+}
+
+details summary {
+    cursor: pointer;
+    font-weight: bold;
+}
